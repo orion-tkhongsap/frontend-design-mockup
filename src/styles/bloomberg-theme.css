@@ -1,0 +1,206 @@
+/* Bloomberg-Inspired Theme Variables */
+:root {
+  /* Light Theme (Default) */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8F9FA;
+  --bg-tertiary: #E9ECEF;
+  --bg-card: #FFFFFF;
+  --bg-hover: #F1F3F5;
+  
+  --text-primary: #1A1A1A;
+  --text-secondary: #495057;
+  --text-muted: #6C757D;
+  --text-inverse: #FFFFFF;
+  
+  --border-primary: #DEE2E6;
+  --border-secondary: #E9ECEF;
+  
+  /* Data Colors */
+  --color-positive: #00C853;
+  --color-negative: #FF3366;
+  --color-neutral: #0084FF;
+  --color-warning: #FFB800;
+  
+  /* Accent Colors */
+  --accent-primary: #0066CC;
+  --accent-secondary: #FF6B00;
+  --accent-tertiary: #7C4DFF;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Theme (Bloomberg Terminal Style) */
+[data-theme="dark"] {
+  --bg-primary: #0A0E1A;
+  --bg-secondary: #141922;
+  --bg-tertiary: #1C2128;
+  --bg-card: #1A1F2A;
+  --bg-hover: #252B36;
+  
+  --text-primary: #FFFFFF;
+  --text-secondary: #A0A0A0;
+  --text-muted: #606060;
+  --text-inverse: #0A0E1A;
+  
+  --border-primary: #2A3038;
+  --border-secondary: #1F252D;
+  
+  /* Data Colors (More vibrant in dark mode) */
+  --color-positive: #00FF88;
+  --color-negative: #FF3366;
+  --color-neutral: #00BFFF;
+  --color-warning: #FFB800;
+  
+  /* Accent Colors */
+  --accent-primary: #00BFFF;
+  --accent-secondary: #FF6B00;
+  --accent-tertiary: #B388FF;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Typography System */
+:root {
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Monaco', monospace;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  --text-xs: 0.625rem;    /* 10px */
+  --text-sm: 0.75rem;     /* 12px */
+  --text-base: 0.875rem;  /* 14px */
+  --text-lg: 1rem;        /* 16px */
+  --text-xl: 1.25rem;     /* 20px */
+  --text-2xl: 1.5rem;     /* 24px */
+  --text-3xl: 2rem;       /* 32px */
+  
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+}
+
+/* Spacing System */
+:root {
+  --spacing-xs: 0.25rem;   /* 4px */
+  --spacing-sm: 0.5rem;    /* 8px */
+  --spacing-md: 1rem;      /* 16px */
+  --spacing-lg: 1.5rem;    /* 24px */
+  --spacing-xl: 2rem;      /* 32px */
+  --spacing-2xl: 3rem;     /* 48px */
+  
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+}
+
+/* Grid System */
+:root {
+  --grid-columns: 12;
+  --grid-gap: 1rem;
+  --container-max: 1920px;
+  --container-padding: 1.5rem;
+}
+
+/* Animation */
+:root {
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms ease;
+}
+
+/* Global Resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--line-height-normal);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+/* Number Formatting */
+.number {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.positive {
+  color: var(--color-positive);
+}
+
+.negative {
+  color: var(--color-negative);
+}
+
+.neutral {
+  color: var(--color-neutral);
+}
+
+.warning {
+  color: var(--color-warning);
+}
+
+/* Utility Classes */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glow {
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.3);
+}
+
+.pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}

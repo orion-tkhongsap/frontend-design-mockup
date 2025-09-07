@@ -1,95 +1,164 @@
 'use client'
 
 import React from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card'
-import { Button } from '@/components/ui/Button'
-import { TrendingUp, PieChart, BarChart3, DollarSign } from 'lucide-react'
+import dynamic from 'next/dynamic'
+import { ThemeProvider } from '@/lib/theme/ThemeContext'
+import DashboardLayout from './DashboardLayout'
 
-const metrics = [
-  {
-    title: 'Revenue YTD',
-    value: '$12.4M',
-    change: '+8.2% vs last year',
-    trend: 'up',
-    icon: TrendingUp,
-    color: 'text-success-600',
-    bgColor: 'bg-success-50',
-  },
-  {
-    title: 'Expenses YTD',
-    value: '$9.8M',
-    change: '+3.1% vs budget',
-    trend: 'up',
-    icon: BarChart3,
-    color: 'text-warning-600',
-    bgColor: 'bg-warning-50',
-  },
-  {
-    title: 'Net Income',
-    value: '$2.6M',
-    change: '+18.5% vs last year',
-    trend: 'up',
-    icon: DollarSign,
-    color: 'text-primary-600',
-    bgColor: 'bg-primary-50',
-  },
-  {
-    title: 'Profit Margin',
-    value: '21%',
-    change: '+2.1pp vs target',
-    trend: 'up',
-    icon: PieChart,
-    color: 'text-accent-600',
-    bgColor: 'bg-accent-50',
-  },
-]
+// Dynamically import heavy components for better performance
+const ExecutiveAlertBar = dynamic(() => import('@/components/dashboard/ExecutiveAlertBar'), {
+  loading: () => <div className="skeleton-loader">Loading alerts...</div>
+})
+
+const KPICommandCenter = dynamic(() => import('@/components/dashboard/KPICommandCenter'), {
+  loading: () => <div className="skeleton-loader">Loading metrics...</div>
+})
+
+const FinancialStatements = dynamic(() => import('@/components/dashboard/FinancialStatements'), {
+  loading: () => <div className="skeleton-loader">Loading statements...</div>
+})
+
+const AIInsightsPanel = dynamic(() => import('@/components/dashboard/AIInsightsPanel'), {
+  loading: () => <div className="skeleton-loader">Loading insights...</div>
+})
 
 export default function DashboardPage() {
   return (
-    <div className="p-6 space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold text-gray-900">Financial Dashboard</h1>
-        <p className="text-gray-600 mt-2">
-          Welcome to your financial overview. Monitor key metrics and access critical insights.
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {metrics.map((metric) => {
-          const Icon = metric.icon
-          return (
-            <Card key={metric.title} hover className="group">
-              <CardContent className="p-6">
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <p className="text-sm font-medium text-gray-600">{metric.title}</p>
-                    <p className="text-2xl font-bold text-gray-900 mt-2">{metric.value}</p>
-                    <p className={`text-sm mt-2 ${metric.color}`}>
-                      {metric.change}
-                    </p>
-                  </div>
-                  <div className={`p-3 rounded-lg ${metric.bgColor} group-hover:scale-110 transition-transform`}>
-                    <Icon className={`h-6 w-6 ${metric.color}`} />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          )
-        })}
-      </div>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Quick Actions</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="flex flex-wrap gap-3">
-            <Button variant="primary">Generate Report</Button>
-            <Button variant="secondary">Create Scenario</Button>
-            <Button variant="secondary">Review Budget</Button>
+    <ThemeProvider>
+      <DashboardLayout>
+        <div className="dashboard-container">
+          {/* Page Header */}
+          <div className="dashboard-header">
+            <div>
+              <h1 className="page-title">Orion Financial Command Center</h1>
+              <p className="page-subtitle">
+                Real-time financial intelligence and performance metrics
+              </p>
+            </div>
+            <div className="header-meta">
+              <span className="last-updated">Last updated: {new Date().toLocaleTimeString()}</span>
+            </div>
           </div>
-        </CardContent>
-      </Card>
-    </div>
+
+          {/* Executive Alert Bar - Full Width */}
+          <ExecutiveAlertBar />
+
+          {/* Main Grid Layout */}
+          <div className="dashboard-grid">
+            {/* KPI Command Center - 12 columns */}
+            <div className="col-span-12">
+              <KPICommandCenter />
+            </div>
+
+            {/* Financial Statements - 6 columns */}
+            <div className="col-span-12 lg:col-span-6">
+              <FinancialStatements />
+            </div>
+
+            {/* AI Insights Panel - 6 columns */}
+            <div className="col-span-12 lg:col-span-6">
+              <AIInsightsPanel />
+            </div>
+          </div>
+        </div>
+
+        <style jsx>{`
+          .dashboard-container {
+            min-height: 100vh;
+            padding: var(--spacing-lg);
+          }
+
+          .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid var(--border-primary);
+          }
+
+          .page-title {
+            font-size: var(--text-3xl);
+            font-weight: var(--font-bold);
+            color: var(--text-primary);
+            margin: 0 0 var(--spacing-xs) 0;
+          }
+
+          .page-subtitle {
+            font-size: var(--text-base);
+            color: var(--text-secondary);
+            margin: 0;
+          }
+
+          .header-meta {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+          }
+
+          .last-updated {
+            font-size: var(--text-xs);
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+          }
+
+          .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: var(--spacing-lg);
+          }
+
+          .col-span-6 {
+            grid-column: span 6;
+          }
+
+          .col-span-12 {
+            grid-column: span 12;
+          }
+
+          .skeleton-loader {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: var(--text-sm);
+            animation: pulse 2s infinite;
+          }
+
+          @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+          }
+
+          @media (max-width: 1024px) {
+            .lg\\:col-span-6 {
+              grid-column: span 12;
+            }
+          }
+
+          @media (max-width: 768px) {
+            .dashboard-header {
+              flex-direction: column;
+              align-items: flex-start;
+              gap: var(--spacing-sm);
+            }
+
+            .header-meta {
+              align-items: flex-start;
+            }
+
+            .dashboard-grid {
+              grid-template-columns: 1fr;
+            }
+
+            [class*="col-span"] {
+              grid-column: span 1;
+            }
+          }
+        `}</style>
+      </DashboardLayout>
+    </ThemeProvider>
   )
 }
