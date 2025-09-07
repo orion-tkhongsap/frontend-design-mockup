@@ -3,15 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -H 0.0.0.0 -p 5000",
-    "build": "next build",
-    "start": "next start -H 0.0.0.0 -p 5000",
+    "dev": "NODE_OPTIONS='--max-old-space-size=1024' next dev -H 0.0.0.0 -p 5000 --turbo",
+    "dev:slow": "next dev -H 0.0.0.0 -p 5000",
+    "build": "NODE_OPTIONS='--max-old-space-size=2048' next build",
+    "start": "NODE_OPTIONS='--max-old-space-size=1024' next start -H 0.0.0.0 -p 5000",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "type-check": "tsc --noEmit",
-    "quality": "npm run type-check && npm run lint && npm run format:check"
+    "quality": "npm run type-check && npm run lint && npm run format:check",
+    "clean": "rm -rf .next node_modules/.cache"
   },
   "dependencies": {
     "@types/d3": "^7.4.3",

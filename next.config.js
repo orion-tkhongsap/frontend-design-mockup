@@ -4,21 +4,57 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   
-  // Performance optimizations
+  // Performance optimizations for development
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
+  },
+  
+  // Development performance settings
+  onDemandEntries: {
+    maxInactiveAge: 15 * 1000,
+    pagesBufferLength: 2,
+  },
+  
+  // Faster builds
+  typescript: {
+    ignoreBuildErrors: process.env.NODE_ENV === 'development',
+  },
+  eslint: {
+    ignoreDuringBuilds: process.env.NODE_ENV === 'development',
   },
   
   // Image optimization
   images: {
     domains: [],
     formats: ['image/avif', 'image/webp'],
+    unoptimized: process.env.NODE_ENV === 'development',
   },
   
-  // Webpack optimizations
-  webpack: (config, { isServer }) => {
-    // Optimize bundle splitting
-    if (!isServer) {
+  // Simplified webpack config for better dev performance
+  webpack: (config, { dev, isServer }) => {
+    // Development optimizations
+    if (dev) {
+      config.watchOptions = {
+        poll: 1000,
+        aggregateTimeout: 300,
+        ignored: ['**/node_modules', '**/.git', '**/.next'],
+      }
+      
+      config.optimization = {
+        ...config.optimization,
+        removeAvailableModules: false,
+        removeEmptyChunks: false,
+        splitChunks: false,
+        runtimeChunk: false,
+        minimize: false,
+      }
+      
+      config.resolve.symlinks = false
+      config.output.pathinfo = false
+    }
+    
+    // Production optimizations
+    if (!dev && !isServer) {
       config.optimization.splitChunks = {
         chunks: 'all',
         cacheGroups: {
@@ -37,24 +73,9 @@ const nextConfig = {
             minChunks: 2,
             priority: 20,
           },
-          lib: {
-            test(module) {
-              return module.size() > 160000 && /node_modules[\\/]/.test(module.identifier())
-            },
-            name(module) {
-              const hash = require('crypto').createHash('sha1')
-              hash.update(module.identifier())
-              return hash.digest('hex').substring(0, 8)
-            },
-            priority: 30,
-            minChunks: 1,
-            reuseExistingChunk: true,
-          },
         },
       }
     }
-    
-    // Tree shaking is handled automatically by Next.js
     
     return config
   },
@@ -62,14 +83,27 @@ const nextConfig = {
   // Experimental features for better performance
   experimental: {
     scrollRestoration: true,
+    optimizeCss: false,
+    workerThreads: false,
+    cpus: 2,
   },
   
   // Production optimizations
   productionBrowserSourceMaps: false,
   compress: true,
+  poweredByHeader: false,
+  generateEtags: false,
+  
+  // Reduce file watching overhead
+  devIndicators: {
+    buildActivity: false,
+  },
   
   // Headers for caching
   async headers() {
+    if (process.env.NODE_ENV === 'development') {
+      return []
+    }
     return [
       {
         source: '/:path*',
