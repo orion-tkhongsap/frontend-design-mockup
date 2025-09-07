@@ -1,3 +1,7 @@
+# ===========================================
+# Python
+# ===========================================
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -25,8 +29,6 @@ var/
 MANIFEST
 
 # PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
 
@@ -52,17 +54,17 @@ coverage.xml
 *.mo
 *.pot
 
-# Django stuff:
+# Django stuff
 *.log
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
 
-# Flask stuff:
+# Flask stuff
 instance/
 .webassets-cache
 
-# Scrapy stuff:
+# Scrapy stuff
 .scrapy
 
 # Sphinx documentation
@@ -100,66 +102,191 @@ poetry.lock
 # Cython debug symbols
 cython_debug/
 
-# VS Code
-.vscode/
+# Python virtual environments
+venv/
+ENV/
+env/
+.venv/
 
-# Claude AI Assistant - Allow .claude directory to be committed
-# .claude/
+# ===========================================
+# Node.js / JavaScript / TypeScript
+# ===========================================
 
-# PyCharm
-.idea/
-*.iml
-
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Windows
-Thumbs.db
-Desktop.ini
-$RECYCLE.BIN/
-
-# Linux
-*~
-
-# Node
+# Dependencies
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage
+.grunt
+
+# Bower dependency directory
+bower_components
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons
+build/Release
+
+# Dependency directories
+jspm_packages/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache
+.cache
+.parcel-cache
+
+# Next.js build output
+.next/
+out/
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+public
+
+# Storybook build outputs
+.out
+.storybook-out
+storybook-static
+
+# Temporary folders
+tmp/
+temp/
+
+# ===========================================
+# React / Frontend Frameworks
+# ===========================================
+
+# Production builds
+build/
+dist/
+
+# Development
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vite
+.vite
+
+# Rollup
+.rollup.cache
+
+# Webpack
+.webpack/
+
+# ===========================================
+# Testing
+# ===========================================
+
+# Jest
+coverage/
+.nyc_output/
+
+# Cypress
+cypress/videos/
+cypress/screenshots/
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
+
+# ===========================================
+# Environment Variables
+# ===========================================
 
 # dotenv environment variables
 .env
 .env.*
+!.env.example
+
+# ===========================================
+# Logs
+# ===========================================
 
 # Logs
 logs/
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# Other
-*.swp
-*.swo
+# ===========================================
+# IDEs and Editors
+# ===========================================
 
-# Test output
-junit.xml
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
 
-# Coverage
-.coverage
+# Local History for Visual Studio Code
+.history/
 
-# System Files
-Icon?
-._*
-.Spotlight-V100
-.Trashes
+# Built Visual Studio Code Extensions
+*.vsix
 
-# Backup files
-*.bak
-*.tmp
-*.orig
-*.old
+# JetBrains IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
 
-# Editor directories and files
+# Sublime Text
 *.sublime-workspace
 *.sublime-project
 *.tmproj
@@ -169,10 +296,167 @@ Icon?
 *.kate-swp
 *.esproj
 *.sublime-settings
-*.vscode/
 
-# Python virtual environments
-venv/
-ENV/
-env/
-.venv/
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ===========================================
+# Operating System Files
+# ===========================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ===========================================
+# Backup and Temporary Files
+# ===========================================
+
+# Backup files
+*.bak
+*.tmp
+*.orig
+*.old
+*.rej
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.temp
+*.tmp
+
+# ===========================================
+# Security and Sensitive Data
+# ===========================================
+
+# API keys and secrets
+*.pem
+*.key
+*.crt
+*.csr
+secrets.json
+.secrets
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# ===========================================
+# Package Managers
+# ===========================================
+
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+
+# pnpm
+.pnpm-debug.log*
+
+# ===========================================
+# Build Tools and Bundlers
+# ===========================================
+
+# Webpack
+.webpack/
+
+# Rollup
+.rollup.cache/
+
+# Vite
+.vite/
+
+# Turbo
+.turbo/
+
+# ===========================================
+# Documentation
+# ===========================================
+
+# Generated documentation
+docs/build/
+docs/dist/
+
+# ===========================================
+# Miscellaneous
+# ===========================================
+
+# System Files
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+
+# Claude AI Assistant - Allow .claude directory to be committed
+# .claude/
+
+# Test output
+junit.xml
+
+# Coverage reports
+coverage/
+.nyc_output/
+
+# Performance monitoring
+.clinic/
+
+# Bundle analyzer
+.bundle-analyzer/
+
+# Sentry
+.sentryclirc
