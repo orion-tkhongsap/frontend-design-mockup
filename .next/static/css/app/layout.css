@@ -984,3 +984,7 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(51 78 104 / var(--tw-bg-opacity, 1));
 }
+
+.disabled\:opacity-50:disabled {
+  opacity: 0.5;
+}
