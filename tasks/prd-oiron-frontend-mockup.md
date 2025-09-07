@@ -1,14 +1,14 @@
-# Product Requirements Document: Oiron Frontend Mockup
+# Product Requirements Document: Orion Frontend Mockup
 
 ## 1. Introduction/Overview
 
-This PRD defines the requirements for creating comprehensive frontend mockups for **Oiron**, an AI-first Financial Planning & Analysis (FP&A) web application designed to replace IBM TM1 Cognos. This document focuses exclusively on the user interface design and user experience, covering all six MVP phases in a single, cohesive mockup design system.
+This PRD defines the requirements for creating comprehensive frontend mockups for **Orion**, an AI-first Financial Planning & Analysis (FP&A) web application designed to replace IBM TM1 Cognos. This document focuses exclusively on the user interface design and user experience, covering all six MVP phases in a single, cohesive mockup design system.
 
 The mockups will demonstrate how users interact with financial reports, perform analysis, manage budgets, and leverage AI capabilities through an intuitive, modern web interface. No backend implementation is required at this stage - the focus is purely on frontend design and user interaction patterns.
 
 ## 2. Goals
 
-1. **Create a complete UI/UX design system** that covers all Oiron functionality across 6 MVP phases
+1. **Create a complete UI/UX design system** that covers all Orion functionality across 6 MVP phases
 2. **Improve upon TM1's user experience** by providing intuitive, modern interfaces that reduce the learning curve
 3. **Design responsive layouts** that work seamlessly on desktop, tablet, and mobile devices
 4. **Establish consistent design patterns** for data visualization, forms, navigation, and user interactions
@@ -117,12 +117,36 @@ The mockups will demonstrate how users interact with financial reports, perform 
 54. The system must provide mobile-specific simplified views
 55. The system must support offline mode indication
 
-### 4.10 Data Visualization Components
-56. The system must provide a consistent chart library (line, bar, pie, waterfall, heatmap, treemap)
-57. The system must allow interactive chart exploration (zoom, pan, filter)
-58. The system must provide chart export and sharing capabilities
-59. The system must display data tables with sorting, filtering, and pagination
-60. The system must show loading states and progress indicators
+### 4.10 Data Visualization Components (Premium Financial Charts)
+56. The system must provide a comprehensive chart library optimized for financial data:
+    - Waterfall charts for variance analysis with custom connecting lines
+    - Sankey diagrams for cost allocation flows with animated transitions
+    - Heatmaps with financial color coding (red/green intensity)
+    - Treemaps for hierarchical budget visualization
+    - Candlestick charts for time-series financial data
+    - Gauge charts for KPI dashboards with custom ranges
+57. The system must allow sophisticated chart interactions:
+    - Multi-level zoom with temporal and categorical drill-down
+    - Pan and scroll with momentum-based easing
+    - Brush selection for range filtering
+    - Hover tooltips with formatted financial numbers
+    - Click-through navigation to underlying data
+58. The system must provide premium export capabilities:
+    - High-resolution PNG/SVG export with vector graphics
+    - PDF export with embedded interactive elements
+    - Excel export with live chart embedding
+    - PowerPoint export with formatted slide layouts
+59. The system must display enterprise-grade data tables:
+    - Virtual scrolling for large datasets (10K+ rows)
+    - Financial number formatting with currency symbols and precision
+    - Conditional formatting based on variance thresholds
+    - Column grouping and spanning for complex headers
+    - Frozen columns and rows for large table navigation
+60. The system must show sophisticated loading states:
+    - Skeleton screens that match actual content layout
+    - Progressive loading with chunked data fetching
+    - Shimmer effects for premium visual feedback
+    - Progress indicators with percentage and time estimates
 
 ### 4.11 Forms & Input Controls
 61. The system must provide consistent form styling and validation
@@ -153,19 +177,58 @@ The mockups will demonstrate how users interact with financial reports, perform 
 
 ## 6. Design Considerations
 
-### Visual Design System
-- **Color Palette**: Professional color scheme with blues/grays for primary, green/red for positive/negative indicators
-- **Typography**: Clear hierarchy with sans-serif fonts for readability
-- **Spacing**: Consistent padding and margins following 8px grid system
-- **Icons**: Comprehensive icon library for actions and states
-- **Dark Mode**: Optional dark theme for reduced eye strain
+### Visual Design System (Enterprise-Grade Requirements)
+- **Color Palette**: Sophisticated financial industry colors with premium feel:
+  - Primary: Deep navy blues (#0D1B2A, #1B263B, #2D3E50) for authority and trust
+  - Secondary: Premium grays (#F8F9FA, #E9ECEF, #6C757D) for neutral backgrounds
+  - Success: Professional green (#28A745, #20C997) for positive indicators
+  - Warning: Amber (#FFC107, #FD7E14) for cautionary states
+  - Danger: Refined red (#DC3545, #E74C3C) for negative indicators
+  - Accent: Gold (#FFD700) for premium highlights and key metrics
+- **Typography**: Enterprise-grade font hierarchy:
+  - Primary: Inter or Source Sans Pro for modern readability
+  - Monospace: JetBrains Mono for financial data and code
+  - Font sizes: 10px-48px scale with precise line heights for data density
+  - Font weights: 400, 500, 600, 700 for proper information hierarchy
+- **Spacing**: Refined 4px base grid system (4, 8, 12, 16, 24, 32, 48, 64px)
+- **Shadows & Depth**: Subtle elevation system with 6 levels for layered interfaces
+- **Icons**: Comprehensive financial icon library (Feather/Heroicons + custom financial icons)
+- **Animation**: Professional micro-interactions with 200-300ms easing curves
+- **Dark Mode**: Premium dark theme with deep blues and warm grays
 
-### Component Library
-- Reusable components for tables, charts, forms, and navigation
-- Consistent button styles (primary, secondary, danger, success)
-- Modal and drawer patterns for secondary actions
-- Toast notifications and alert banners
-- Loading skeletons and progress indicators
+### Component Library (World-Class Standards)
+- **Data Tables**: Enterprise-grade tables with:
+  - Sophisticated sorting, filtering, and grouping capabilities
+  - Sticky headers and columns for large datasets
+  - Inline editing with real-time validation
+  - Financial number formatting ($, K, M, B with proper alignment)
+  - Zebra striping and hover states for readability
+- **Charts & Visualizations**: Premium financial charts:
+  - Waterfall charts for variance analysis
+  - Sankey diagrams for cost allocation flows
+  - Heatmaps for correlation analysis
+  - Interactive treemaps for hierarchical data
+  - Professional color palettes for financial data
+- **Navigation**: Sophisticated navigation patterns:
+  - Collapsible sidebar with grouped menu items
+  - Breadcrumb navigation with dropdown menus
+  - Tab systems with drag-and-drop reordering
+  - Search with intelligent autocomplete
+- **Forms**: Enterprise-grade form components:
+  - Multi-step wizards with progress indicators
+  - Inline validation with contextual help
+  - Auto-save with conflict resolution
+  - Conditional field display based on user roles
+- **Buttons**: Comprehensive button system:
+  - Primary, secondary, tertiary hierarchy
+  - Icon buttons with tooltips
+  - Loading states with spinners
+  - Disabled states with explanatory tooltips
+- **Modals & Overlays**: Sophisticated overlay patterns:
+  - Slide-out panels for detailed views
+  - Contextual popovers for quick actions
+  - Full-screen modals for complex workflows
+  - Toast notifications with action buttons
 
 ### Responsive Breakpoints
 - Mobile: 320px - 768px
@@ -214,16 +277,20 @@ The mockups will demonstrate how users interact with financial reports, perform 
 - Component documentation and design tokens
 - Responsive preview capabilities
 
-## 8. Success Metrics
+## 8. Success Metrics (World-Class Standards)
 
-1. **Design Completeness**: 100% of screens designed for all 6 MVP phases
-2. **Consistency Score**: >90% adherence to design system guidelines
-3. **Usability Testing**: >80% task completion rate in user testing
-4. **Responsive Coverage**: Designs for mobile, tablet, and desktop for all key screens
-5. **Accessibility Compliance**: WCAG 2.1 AA standards met
-6. **Stakeholder Approval**: Sign-off from all four user personas
-7. **Developer Handoff**: Complete design specifications and assets ready
-8. **Time to Understanding**: <5 minutes for users to understand main navigation
+1. **Design Completeness**: 100% of screens designed for all 6 MVP phases with pixel-perfect implementation
+2. **Visual Excellence**: >95% "Premium Feel" rating from financial industry professionals
+3. **Consistency Score**: >95% adherence to enterprise design system guidelines
+4. **Usability Testing**: >90% task completion rate with <30-second average task time
+5. **Performance Standards**: <2-second load times for all dashboards and reports
+6. **Responsive Excellence**: Designs optimized for mobile, tablet, and desktop with touch-first interactions
+7. **Accessibility Leadership**: WCAG 2.1 AA+ compliance with keyboard-first navigation
+8. **Stakeholder Approval**: Unanimous sign-off from all four user personas
+9. **Developer Readiness**: Complete design system with documented components and tokens
+10. **Competitive Analysis**: Must demonstrate clear visual superiority over Workday, Anaplan, OneStream
+11. **Professional Recognition**: Design quality that could win enterprise software design awards
+12. **Time to Value**: <3 minutes for new users to complete their first meaningful task
 
 ## 9. Open Questions
 
@@ -240,4 +307,4 @@ The mockups will demonstrate how users interact with financial reports, perform 
 
 ---
 
-*This PRD serves as the comprehensive specification for creating frontend mockups for the Oiron FP&A platform. The focus is entirely on user interface design and user experience, with all backend functionality to be mocked for demonstration purposes.*
+*This PRD serves as the comprehensive specification for creating frontend mockups for the Orion FP&A platform. The focus is entirely on user interface design and user experience, with all backend functionality to be mocked for demonstration purposes. The end result must demonstrate world-class enterprise software that competes with premium financial platforms like Workday Adaptive Planning, Anaplan, and OneStream.*
