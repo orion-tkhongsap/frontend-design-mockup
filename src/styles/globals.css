@@ -2,32 +2,184 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Orion Design System CSS Variables */
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  /* Light theme colors */
+  --orion-bg-primary: #fafbfc;
+  --orion-bg-secondary: #ffffff;
+  --orion-text-primary: #0d1b2a;
+  --orion-text-secondary: #343a40;
+  --orion-text-muted: #6c757d;
+  --orion-border: #dee2e6;
+  --orion-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  
+  /* Financial colors */
+  --orion-financial-positive: #16a34a;
+  --orion-financial-negative: #dc2626;
+  --orion-financial-neutral: #6b7280;
+  --orion-financial-budget: #2563eb;
+  --orion-financial-actual: #059669;
+  --orion-financial-forecast: #7c3aed;
+  --orion-financial-variance: #ea580c;
+  
+  /* Animation timing */
+  --orion-transition-fast: 150ms cubic-bezier(0, 0, 0.2, 1);
+  --orion-transition-normal: 250ms cubic-bezier(0, 0, 0.2, 1);
+  --orion-transition-slow: 350ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+/* Dark theme colors */
+.dark {
+  --orion-bg-primary: #0f1419;
+  --orion-bg-secondary: #1a1f2e;
+  --orion-text-primary: #f0f4f8;
+  --orion-text-secondary: #bcccdc;
+  --orion-text-muted: #9fb3c8;
+  --orion-border: #334e68;
+  --orion-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+}
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    background-color: var(--orion-bg-primary);
+    color: var(--orion-text-primary);
+    transition: background-color var(--orion-transition-normal), color var(--orion-transition-normal);
+  }
+  
+  /* Financial number styling */
+  .financial-positive {
+    color: var(--orion-financial-positive);
+  }
+  
+  .financial-negative {
+    color: var(--orion-financial-negative);
+  }
+  
+  .financial-neutral {
+    color: var(--orion-financial-neutral);
+  }
+  
+  /* Card hover effects */
+  .orion-card {
+    background-color: var(--orion-bg-secondary);
+    border: 1px solid var(--orion-border);
+    box-shadow: var(--orion-shadow);
+    transition: all var(--orion-transition-normal);
+  }
+  
+  .orion-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .dark .orion-card:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer components {
+  /* Enterprise button styles */
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-normal;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary-100 hover:bg-secondary-200 text-secondary-700 font-semibold py-3 px-6 rounded-lg transition-all duration-normal;
+    border: 1px solid var(--orion-border);
+  }
+  
+  /* Premium form inputs */
+  .input-primary {
+    @apply w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-normal;
+    background-color: var(--orion-bg-secondary);
+    color: var(--orion-text-primary);
+  }
+  
+  /* Financial data table styles */
+  .financial-table {
+    @apply w-full border-collapse;
+  }
+  
+  .financial-table th {
+    @apply bg-secondary-50 text-secondary-700 font-semibold text-sm py-3 px-4 text-left border-b border-secondary-200;
+  }
+  
+  .dark .financial-table th {
+    @apply bg-secondary-800 text-secondary-200 border-secondary-700;
+  }
+  
+  .financial-table td {
+    @apply py-3 px-4 border-b border-secondary-100 font-mono text-sm;
+  }
+  
+  .dark .financial-table td {
+    @apply border-secondary-800;
+  }
+  
+  /* Loading skeleton animations */
+  .skeleton {
+    @apply bg-secondary-200 rounded animate-pulse;
+  }
+  
+  .dark .skeleton {
+    @apply bg-secondary-700;
+  }
+  
+  .shimmer {
+    background: linear-gradient(90deg, 
+      var(--orion-border) 25%, 
+      rgba(255, 255, 255, 0.5) 50%, 
+      var(--orion-border) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .orion-card {
+      border-width: 2px;
+    }
+    
+    .btn-primary, .btn-secondary {
+      border-width: 2px;
+    }
+  }
+  
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  
+  /* Focus visibility for accessibility */
+  .focus-visible {
+    @apply outline-none ring-2 ring-primary-500 ring-offset-2;
+  }
+  
+  .dark .focus-visible {
+    @apply ring-offset-primary-900;
   }
 }

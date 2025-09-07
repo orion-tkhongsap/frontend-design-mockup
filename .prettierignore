@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+.pnp.js
+
+# Production builds
+.next/
+out/
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Package manager
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Generated files
+*.generated.*
+*.min.js
+*.min.css
+
+# Documentation
+CHANGELOG.md
+LICENSE
+README.md
+
+# Git
+.gitignore

@@ -1,9 +1,19 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
+
+  const handleExploreDashboard = () => {
+    setIsLoading(true)
+    // Small delay to show loading state, then navigate
+    setTimeout(() => {
+      router.push('/dashboard')
+    }, 500)
+  }
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -46,11 +56,8 @@ export default function Home() {
       
       <div className="text-center">
         <button 
-          className="bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200"
-          onClick={() => {
-            setIsLoading(true)
-            setTimeout(() => setIsLoading(false), 1000)
-          }}
+          className="bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 disabled:opacity-50"
+          onClick={handleExploreDashboard}
           disabled={isLoading}
         >
           {isLoading ? 'Loading...' : 'Explore Dashboard'}
