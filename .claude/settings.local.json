@@ -5,7 +5,9 @@
       "Bash(git push:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Read(//home/tkhongsap/.claude/**)"
+      "Read(//home/tkhongsap/.claude/**)",
+      "Bash(git worktree:*)",
+      "Bash(rm:*)"
     ],
     "deny": [],
     "ask": []
