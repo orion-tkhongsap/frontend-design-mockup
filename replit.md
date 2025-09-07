@@ -1,7 +1,7 @@
-# Oiron Frontend Mockup - Replit Project
+# Orion Frontend Mockup - Replit Project
 
 ## Overview
-This is a comprehensive frontend mockup for **Oiron**, an AI-first Financial Planning & Analysis (FP&A) web application designed to replace IBM TM1 Cognos. This project focuses entirely on UI/UX design and user experience demonstrations across all six MVP phases.
+This is a comprehensive frontend mockup for **Orion**, an AI-first Financial Planning & Analysis (FP&A) web application designed to replace IBM TM1 Cognos. This project focuses entirely on UI/UX design and user experience demonstrations across all six MVP phases.
 
 ## Project Status
 **Status**: Initialized and Running ✅

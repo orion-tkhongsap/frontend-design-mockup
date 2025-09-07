@@ -6,7 +6,7 @@ import '@/styles/globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Oiron - AI-First Financial Planning & Analysis',
+  title: 'Orion - AI-First Financial Planning & Analysis',
   description: 'Modern FP&A platform designed to replace IBM TM1 Cognos',
 }
 
