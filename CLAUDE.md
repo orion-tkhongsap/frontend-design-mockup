@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Oiron Frontend Design Mockup** - A comprehensive frontend mockup implementation for an AI-first Financial Planning & Analysis (FP&A) web application designed to replace IBM TM1 Cognos. This is a pure frontend project with no backend integration, focusing on UI/UX design and user journey demonstrations.
+**Orion Frontend Design Mockup** - A comprehensive frontend mockup implementation for an AI-first Financial Planning & Analysis (FP&A) web application designed to replace IBM TM1 Cognos. This is a pure frontend project with no backend integration, focusing on UI/UX design and user journey demonstrations.
 
 ## Project Architecture
 
@@ -39,8 +39,8 @@ To launch parallel implementations:
 
 ### Task Management System
 Tasks are managed through:
-- **PRD**: `tasks/prd-oiron-frontend-mockup.md` - Complete requirements (70 functional requirements)
-- **Task List**: `tasks/tasks-prd-oiron-frontend-mockup.md` - 88 implementation sub-tasks
+- **PRD**: `tasks/prd-orion-frontend-mockup.md` - Complete requirements (70 functional requirements)
+- **Task List**: `tasks/tasks-prd-orion-frontend-mockup.md` - 88 implementation sub-tasks
 - **Continuous Mode**: Rename to `tasks-continuous-*.md` for automatic sequential execution
 
 ## Key Commands
