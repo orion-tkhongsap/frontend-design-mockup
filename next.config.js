@@ -1,27 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Configure for Replit environment
-  experimental: {
-    allowedDevOrigins: [
-      'https://12052761-9295-439e-b07d-ca6da1bffc0a-00-1esi4g3znul0f.pike.replit.dev',
-      '*.replit.dev',
-      '*.repl.co',
-      '*.replit.app',
-    ],
+  // Optimize for production
+  reactStrictMode: true,
+  swcMinify: true,
+  
+  // Optimize images
+  images: {
+    domains: [],
   },
-  // Remove X-Frame-Options to allow embedding in Replit webview
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'no-cache, no-store, must-revalidate',
-          },
-        ],
-      },
-    ]
+  
+  // Performance optimizations
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
   },
 }
 
