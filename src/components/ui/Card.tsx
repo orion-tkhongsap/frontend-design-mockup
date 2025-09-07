@@ -1,140 +1,105 @@
-'use client'
+import React from 'react'
+import { clsx } from 'clsx'
 
-import React, { ReactNode, forwardRef } from 'react'
-import { Card as MuiCard, CardContent, CardHeader, CardActions } from '@mui/material'
-import { styled } from '@mui/material/styles'
-
-export interface CardProps {
-  children: ReactNode
-  title?: string
-  subtitle?: string
-  actions?: ReactNode
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+  variant?: 'default' | 'elevated' | 'outlined' | 'glass'
   hover?: boolean
-  padding?: 'none' | 'sm' | 'md' | 'lg'
-  variant?: 'elevated' | 'outlined' | 'flat'
-  className?: string
-  onClick?: () => void
+  noPadding?: boolean
+  interactive?: boolean
 }
 
-const StyledCard = styled(MuiCard, {
-  shouldForwardProp: (prop) => !['hover'].includes(prop as string),
-})<{ hover?: boolean }>(({ theme, hover }) => ({
-  borderRadius: '12px',
-  transition: 'all 250ms cubic-bezier(0, 0, 0.2, 1)',
-  cursor: hover ? 'pointer' : 'default',
-  ...(hover && {
-    '&:hover': {
-      transform: 'translateY(-2px)',
-      boxShadow: theme.palette.mode === 'light' 
-        ? '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)'
-        : '0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2)',
-    },
-  }),
-}))
+const variantStyles = {
+  default: 'bg-white shadow-sm',
+  elevated: 'bg-white shadow-lg',
+  outlined: 'bg-white border-2 border-gray-200',
+  glass: 'bg-white/80 backdrop-blur-sm shadow-lg',
+}
 
-export const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ 
-    children, 
-    title, 
-    subtitle, 
-    actions, 
-    hover = false, 
-    padding = 'md',
-    variant = 'elevated',
-    className,
-    onClick,
-    ...props 
-  }, ref) => {
-    const getVariantStyles = () => {
-      switch (variant) {
-        case 'elevated':
-          return {
-            boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
-            border: 'none',
-          }
-        case 'outlined':
-          return {
-            boxShadow: 'none',
-            border: '1px solid #dee2e6',
-          }
-        case 'flat':
-          return {
-            boxShadow: 'none',
-            border: 'none',
-            backgroundColor: 'transparent',
-          }
-        default:
-          return {}
-      }
-    }
+export function Card({
+  children,
+  variant = 'default',
+  hover = false,
+  noPadding = false,
+  interactive = false,
+  className,
+  onClick,
+  ...props
+}: CardProps) {
+  return (
+    <div
+      className={clsx(
+        'rounded-lg transition-all duration-200',
+        variantStyles[variant],
+        !noPadding && 'p-6',
+        hover && 'hover:shadow-xl hover:-translate-y-1',
+        interactive && 'cursor-pointer active:scale-[0.98]',
+        onClick && 'cursor-pointer',
+        className
+      )}
+      onClick={onClick}
+      {...props}
+    >
+      {children}
+    </div>
+  )
+}
 
-    const getPaddingStyles = () => {
-      switch (padding) {
-        case 'none':
-          return { padding: 0 }
-        case 'sm':
-          return { padding: '12px' }
-        case 'md':
-          return { padding: '20px' }
-        case 'lg':
-          return { padding: '32px' }
-        default:
-          return {}
-      }
-    }
+export function CardHeader({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div className={clsx('mb-4 pb-4 border-b border-gray-200', className)} {...props}>
+      {children}
+    </div>
+  )
+}
 
-    return (
-      <StyledCard
-        ref={ref}
-        hover={hover}
-        className={className}
-        onClick={onClick}
-        sx={{
-          ...getVariantStyles(),
-          backgroundColor: variant === 'flat' ? 'transparent' : undefined,
-        }}
-        {...props}
-      >
-        {(title || subtitle) && (
-          <CardHeader
-            title={title}
-            subheader={subtitle}
-            sx={{
-              ...getPaddingStyles(),
-              paddingBottom: children ? '8px' : getPaddingStyles().padding,
-            }}
-          />
-        )}
-        
-        {children && (
-          <CardContent
-            sx={{
-              ...getPaddingStyles(),
-              paddingTop: (title || subtitle) ? '8px' : getPaddingStyles().padding,
-              paddingBottom: actions ? '8px' : getPaddingStyles().padding,
-              '&:last-child': {
-                paddingBottom: actions ? '8px' : getPaddingStyles().padding,
-              },
-            }}
-          >
-            {children}
-          </CardContent>
-        )}
-        
-        {actions && (
-          <CardActions
-            sx={{
-              ...getPaddingStyles(),
-              paddingTop: '8px',
-              justifyContent: 'flex-end',
-            }}
-          >
-            {actions}
-          </CardActions>
-        )}
-      </StyledCard>
-    )
-  }
-)
+export function CardTitle({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLHeadingElement>) {
+  return (
+    <h3 className={clsx('text-lg font-semibold text-gray-900', className)} {...props}>
+      {children}
+    </h3>
+  )
+}
 
-Card.displayName = 'Card'
+export function CardDescription({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLParagraphElement>) {
+  return (
+    <p className={clsx('text-sm text-gray-600 mt-1', className)} {...props}>
+      {children}
+    </p>
+  )
+}
+
+export function CardContent({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div className={clsx('', className)} {...props}>
+      {children}
+    </div>
+  )
+}
+
+export function CardFooter({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div className={clsx('mt-4 pt-4 border-t border-gray-200', className)} {...props}>
+      {children}
+    </div>
+  )
+}

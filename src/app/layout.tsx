@@ -1,65 +1,33 @@
-'use client'
-
+import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { ReactNode } from 'react'
-import { ThemeProvider, createTheme } from '@mui/material/styles'
-import CssBaseline from '@mui/material/CssBaseline'
 import '@/styles/globals.css'
 
 const inter = Inter({ 
   subsets: ['latin'],
   display: 'swap',
-  fallback: ['system-ui', 'arial']
+  variable: '--font-inter',
 })
 
-// Create MUI theme that matches Orion design system
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#486581',
-      light: '#627d98',
-      dark: '#334e68',
-    },
-    secondary: {
-      main: '#6c757d',
-      light: '#adb5bd',
-      dark: '#495057',
-    },
-    success: {
-      main: '#38a169',
-      light: '#48bb78',
-      dark: '#2f855a',
-    },
-    warning: {
-      main: '#f59e0b',
-      light: '#fbbf24',
-      dark: '#d97706',
-    },
-    error: {
-      main: '#ef4444',
-      light: '#f87171',
-      dark: '#dc2626',
-    },
-  },
-  typography: {
-    fontFamily: inter.style.fontFamily,
-  },
-})
+export const metadata: Metadata = {
+  title: 'Orion - AI-First Financial Planning & Analysis',
+  description: 'Modern FP&A platform designed to replace IBM TM1 Cognos with AI-powered financial reporting, budgeting, and strategic planning capabilities.',
+  keywords: 'FP&A, financial planning, analysis, budgeting, forecasting, AI, dashboard',
+  authors: [{ name: 'Orion Team' }],
+  viewport: 'width=device-width, initial-scale=1',
+  themeColor: '#486581',
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: ReactNode
+  children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <main className="min-h-screen bg-gray-50">
-            {children}
-          </main>
-        </ThemeProvider>
+    <html lang="en" className={inter.variable}>
+      <body className="font-sans antialiased bg-gray-50 text-gray-900">
+        <main className="min-h-screen">
+          {children}
+        </main>
       </body>
     </html>
   )

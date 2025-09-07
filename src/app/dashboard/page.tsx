@@ -1,115 +1,95 @@
 'use client'
 
 import React from 'react'
-import { Box, Typography, Grid } from '@mui/material'
-import { Card } from '@/components/ui/Card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
-import { TrendingUp, Assessment, AccountBalance, PieChart } from '@mui/icons-material'
+import { TrendingUp, PieChart, BarChart3, DollarSign } from 'lucide-react'
+
+const metrics = [
+  {
+    title: 'Revenue YTD',
+    value: '$12.4M',
+    change: '+8.2% vs last year',
+    trend: 'up',
+    icon: TrendingUp,
+    color: 'text-success-600',
+    bgColor: 'bg-success-50',
+  },
+  {
+    title: 'Expenses YTD',
+    value: '$9.8M',
+    change: '+3.1% vs budget',
+    trend: 'up',
+    icon: BarChart3,
+    color: 'text-warning-600',
+    bgColor: 'bg-warning-50',
+  },
+  {
+    title: 'Net Income',
+    value: '$2.6M',
+    change: '+18.5% vs last year',
+    trend: 'up',
+    icon: DollarSign,
+    color: 'text-primary-600',
+    bgColor: 'bg-primary-50',
+  },
+  {
+    title: 'Profit Margin',
+    value: '21%',
+    change: '+2.1pp vs target',
+    trend: 'up',
+    icon: PieChart,
+    color: 'text-accent-600',
+    bgColor: 'bg-accent-50',
+  },
+]
 
 export default function DashboardPage() {
   return (
-    <Box sx={{ p: 3 }}>
-      <Typography variant="h4" component="h1" gutterBottom>
-        Financial Dashboard
-      </Typography>
-      <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
-        Welcome to your financial overview. Monitor key metrics and access critical insights.
-      </Typography>
+    <div className="p-6 space-y-6">
+      <div>
+        <h1 className="text-3xl font-bold text-gray-900">Financial Dashboard</h1>
+        <p className="text-gray-600 mt-2">
+          Welcome to your financial overview. Monitor key metrics and access critical insights.
+        </p>
+      </div>
 
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={6} lg={3}>
-          <Card hover>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-              <TrendingUp sx={{ color: '#2f855a', fontSize: 32 }} />
-              <Box>
-                <Typography variant="h5" component="div">
-                  $12.4M
-                </Typography>
-                <Typography color="text.secondary">
-                  Revenue YTD
-                </Typography>
-              </Box>
-            </Box>
-            <Typography variant="body2" sx={{ color: '#2f855a' }}>
-              +8.2% vs last year
-            </Typography>
-          </Card>
-        </Grid>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {metrics.map((metric) => {
+          const Icon = metric.icon
+          return (
+            <Card key={metric.title} hover className="group">
+              <CardContent className="p-6">
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-gray-600">{metric.title}</p>
+                    <p className="text-2xl font-bold text-gray-900 mt-2">{metric.value}</p>
+                    <p className={`text-sm mt-2 ${metric.color}`}>
+                      {metric.change}
+                    </p>
+                  </div>
+                  <div className={`p-3 rounded-lg ${metric.bgColor} group-hover:scale-110 transition-transform`}>
+                    <Icon className={`h-6 w-6 ${metric.color}`} />
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )
+        })}
+      </div>
 
-        <Grid item xs={12} md={6} lg={3}>
-          <Card hover>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-              <Assessment sx={{ color: '#486581', fontSize: 32 }} />
-              <Box>
-                <Typography variant="h5" component="div">
-                  $9.8M
-                </Typography>
-                <Typography color="text.secondary">
-                  Expenses YTD
-                </Typography>
-              </Box>
-            </Box>
-            <Typography variant="body2" sx={{ color: '#d97706' }}>
-              +3.1% vs budget
-            </Typography>
-          </Card>
-        </Grid>
-
-        <Grid item xs={12} md={6} lg={3}>
-          <Card hover>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-              <AccountBalance sx={{ color: '#7c3aed', fontSize: 32 }} />
-              <Box>
-                <Typography variant="h5" component="div">
-                  $2.6M
-                </Typography>
-                <Typography color="text.secondary">
-                  Net Income
-                </Typography>
-              </Box>
-            </Box>
-            <Typography variant="body2" sx={{ color: '#2f855a' }}>
-              +18.5% vs last year
-            </Typography>
-          </Card>
-        </Grid>
-
-        <Grid item xs={12} md={6} lg={3}>
-          <Card hover>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-              <PieChart sx={{ color: '#ca8a04', fontSize: 32 }} />
-              <Box>
-                <Typography variant="h5" component="div">
-                  21%
-                </Typography>
-                <Typography color="text.secondary">
-                  Profit Margin
-                </Typography>
-              </Box>
-            </Box>
-            <Typography variant="body2" sx={{ color: '#2f855a' }}>
-              +2.1pp vs target
-            </Typography>
-          </Card>
-        </Grid>
-      </Grid>
-
-      <Box sx={{ mt: 4 }}>
-        <Typography variant="h6" gutterBottom>
-          Quick Actions
-        </Typography>
-        <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-          <Button variant="primary">
-            Generate Report
-          </Button>
-          <Button variant="secondary">
-            Create Scenario
-          </Button>
-          <Button variant="secondary">
-            Review Budget
-          </Button>
-        </Box>
-      </Box>
-    </Box>
+      <Card>
+        <CardHeader>
+          <CardTitle>Quick Actions</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="flex flex-wrap gap-3">
+            <Button variant="primary">Generate Report</Button>
+            <Button variant="secondary">Create Scenario</Button>
+            <Button variant="secondary">Review Budget</Button>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
   )
 }

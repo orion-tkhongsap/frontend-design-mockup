@@ -7,7 +7,9 @@
       "Bash(git commit:*)",
       "Read(//home/tkhongsap/.claude/**)",
       "Bash(git worktree:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(npm install)",
+      "Bash(npm run dev:*)"
     ],
     "deny": [],
     "ask": []
