@@ -1,9 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Configure for Replit environment
   experimental: {
-    appDir: true,
+    allowedDevOrigins: [
+      '*.replit.dev',
+      '*.repl.co',
+      '*.replit.app',
+    ],
   },
-  // Enable all hosts for Replit environment
   async headers() {
     return [
       {

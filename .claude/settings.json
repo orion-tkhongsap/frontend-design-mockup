@@ -1,0 +1,6 @@
+{
+  "statusLine": {
+    "type": "command",
+    "command": "bash -c 'input=$(cat); model=$(echo \"$input\" | jq -r \".model.display_name // \\\"Claude\\\"\"); branch=$(git --no-optional-locks branch --show-current 2>/dev/null || echo \"no-git\"); current=$(date +%s); last_commit=$(git --no-optional-locks log -1 --format=%ct 2>/dev/null); if [ -n \"$last_commit\" ]; then commit_hrs=$(((current - last_commit) / 3600)); commit_time=$([ $commit_hrs -eq 0 ] && echo \"<1h\" || echo \"${commit_hrs}h\"); else commit_time=\"n/a\"; fi; remote=$(git --no-optional-locks rev-parse --abbrev-ref @{u} 2>/dev/null); if [ -n \"$remote\" ]; then last_push=$(git --no-optional-locks log -1 --format=%ct \"$remote\" 2>/dev/null); if [ -n \"$last_push\" ]; then push_hrs=$(((current - last_push) / 3600)); push_time=$([ $push_hrs -eq 0 ] && echo \"<1h\" || echo \"${push_hrs}h\"); else push_time=\"n/a\"; fi; else push_time=\"no-remote\"; fi; printf \"%s | %s | commit: %s ago | push: %s ago\" \"$model\" \"$branch\" \"$commit_time\" \"$push_time\"'"
+  }
+}
