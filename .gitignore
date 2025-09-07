@@ -460,3 +460,6 @@ coverage/
 
 # Sentry
 .sentryclirc
+
+# Temporary assets
+attached_assets/
