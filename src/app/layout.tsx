@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import '@/styles/globals.css'
 import '@/styles/bloomberg-theme.css'
-import { ThemeProvider } from '@/lib/theme/ThemeContext'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -27,11 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="font-sans antialiased">
-        <ThemeProvider>
-          <main className="min-h-screen">
-            {children}
-          </main>
-        </ThemeProvider>
+        <main className="min-h-screen">
+          {children}
+        </main>
       </body>
     </html>
   )

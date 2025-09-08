@@ -1,12 +1,14 @@
-# **Product Requirements Document: Oiron**
+# **Product Requirements Document: Orion**
 
 **The AI-First Financial Planning & Analysis Platform for TCC Technology**
 
+> **Note:** For mockup design specifications with Bloomberg-inspired UI/UX, see [prd-mockup-design.md](./prd-mockup-design.md)
+
 ## **1\. Introduction & Vision**
 
-This document outlines the requirements for **Oiron**, a new, internally-developed web application designed to replace the existing IBM TM1 Cognos system. Our current system serves its purpose as a reliable record-keeper and reporting tool but lacks the intelligence and proactivity required by a modern, data-driven organization.
+This document outlines the requirements for **Orion**, a new, internally-developed web application designed to replace the existing IBM TM1 Cognos system. Our current system serves its purpose as a reliable record-keeper and reporting tool but lacks the intelligence and proactivity required by a modern, data-driven organization.
 
-**Vision:** To transform TCC Technology's financial operations from reactive reporting to proactive, AI-powered strategic guidance. Oiron will not just be a tool; it will be an indispensable assistant to our finance, accounting, and leadership teams, automating routine tasks, uncovering hidden insights, and enabling smarter, faster decision-making.
+**Vision:** To transform TCC Technology's financial operations from reactive reporting to proactive, AI-powered strategic guidance. Orion will not just be a tool; it will be an indispensable assistant to our finance, accounting, and leadership teams, automating routine tasks, uncovering hidden insights, and enabling smarter, faster decision-making.
 
 ## **2\. Goals & Objectives**
 
@@ -72,13 +74,13 @@ This roadmap is designed to deliver value at each stage, building a comprehensiv
   * **Budget Templates:** Web-based input templates for department heads like Mark to submit their annual budgets.  
   * **Workflow & Approvals:** A system for submission, review, commentary, and approval of budgets.  
   * **Real-time Consolidation:** As departments submit their budgets, Sarah and David see the company-wide numbers roll up in real-time.  
-  * **AI Feature: Predictive Baseline:** Oiron generates a baseline forecast using time-series analysis of historical data. This serves as an unbiased starting point for the planning process, saving time and reducing manual guesswork.
+  * **AI Feature: Predictive Baseline:** Orion generates a baseline forecast using time-series analysis of historical data. This serves as an unbiased starting point for the planning process, saving time and reducing manual guesswork.
 
 ### **MVP 5: The Financial Assistant & Natural Language**
 
 * **Theme:** Fulfill the vision of an AI assistant that understands and explains the data.  
 * **Features:**  
-  * **Natural Language Query (NLQ):** A search bar where any user can ask questions like, *"What was our top 5 operating expense in Q3?"* or *"Compare cloud services revenue this year vs. last year."*  
+  * **Natural Language and Voice Query (LLM):** A search bar where any user can ask questions like, *"What was our top 5 operating expense in Q3?"* or *"Compare cloud services revenue this year vs. last year."*  
   * **Automated Variance Commentary:** The system automatically generates text summaries explaining *why* a variance occurred (e.g., *"Revenue is 5% above budget, primarily driven by a 15% increase in new customer acquisition in the enterprise segment."*).  
   * **Personalized Dashboards:** Users can create and customize their own dashboards with the KPIs and charts most relevant to them.
 
